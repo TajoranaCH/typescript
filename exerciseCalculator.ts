@@ -57,10 +57,14 @@ const calculateExercises = (dailyExercisesHours: number[], targetAmount: number)
   };
 };
 
-const excPerDays = [ ...process.argv ];
+if(require.main == module) {
+  const excPerDays = [ ...process.argv ];
 
-excPerDays.shift();
-excPerDays.shift();
+  excPerDays.shift();
+  excPerDays.shift();
+  
+  const target = excPerDays.shift();
+  console.log(calculateExercises(excPerDays.map(n => parseInt(n, 10)), Number(target)));
+}
 
-const target = excPerDays.shift();
-console.log(calculateExercises(excPerDays.map(n => parseInt(n, 10)), Number(target)));
+export default calculateExercises;
